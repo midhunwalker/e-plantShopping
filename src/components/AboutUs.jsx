@@ -1,6 +1,6 @@
 function AboutUs() {
     return (
-        <div className="about-container">
+        <div className="about-us-container">
             <h1 className="page-title">About Paradise Nursery</h1>
             <div className="about-content">
                 <div className="about-section">

@@ -1,19 +1,25 @@
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import ProductList from './components/ProductList';
 import CartItems from './components/CartItems';
 import AboutUs from './components/AboutUs';
 import './App.css';
 
-function LandingPage() {
+function LandingPage({ setShowProductList }) {
   const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    setShowProductList(true);
+    navigate('/products');
+  };
 
   return (
     <div className="landing-page">
       <div className="landing-content">
         <h1 className="landing-title">Paradise Nursery</h1>
         <p className="landing-subtitle">Where Green Meets Serenity</p>
-        <button className="get-started-btn" onClick={() => navigate('/products')}>
+        <button className="get-started-btn" onClick={handleGetStarted}>
           Get Started
         </button>
       </div>
@@ -51,11 +57,13 @@ function Navbar() {
 }
 
 function App() {
+  const [showProductList, setShowProductList] = useState(false);
+
   return (
     <Router>
       <div className="app">
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<LandingPage setShowProductList={setShowProductList} />} />
           <Route path="/*" element={
             <>
               <Navbar />

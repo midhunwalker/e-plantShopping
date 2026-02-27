@@ -31,6 +31,10 @@ function CartItems() {
         return cartItems.reduce((total, item) => total + item.quantity, 0);
     };
 
+    const handleCheckout = () => {
+        alert('Coming Soon');
+    };
+
     if (cartItems.length === 0) {
         return (
             <div className="empty-cart">
@@ -94,7 +98,7 @@ function CartItems() {
                         <span>Total Amount:</span>
                         <span>${calculateTotal().toFixed(2)}</span>
                     </div>
-                    <button className="checkout-btn">Proceed to Checkout</button>
+                    <button className="checkout-btn" onClick={handleCheckout}>Proceed to Checkout</button>
                     <button className="continue-shopping-btn" onClick={() => navigate('/products')}>
                         Continue Shopping
                     </button>
